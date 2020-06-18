@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.supermap.gaf.rest.exceptions.ExceptionMapperConfig
+com.enough.common.rest.exceptions.ExceptionMapperConfig

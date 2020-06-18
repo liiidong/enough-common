@@ -1,11 +1,11 @@
 package com.enough.common.listeners;
 
+import com.enough.common.rest.utils.WebTool;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.supermap.gaf.rest.utils.WebTool;
-
-public class InitListener implements ServletContextListener{
+public class InitListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {

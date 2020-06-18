@@ -1,7 +1,7 @@
-package com.supermap.gaf.rest;
+package com.enough.common.rest;
 
 import javax.servlet.http.HttpServletRequest;
 
 public interface HttpServletRequestAware {
-    void setHttpServletRequest(HttpServletRequest var1);
+    void setHttpServletRequest(HttpServletRequest httpServletRequest);
 }

@@ -8,8 +8,8 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 
 import com.enough.common.model.ReturnResult;
-import com.supermap.gaf.rest.HttpServletRequestAware;
-import com.supermap.gaf.rest.utils.HttpUtil;
+import com.enough.common.rest.HttpServletRequestAware;
+import com.enough.common.rest.utils.HttpUtil;
 
 public class IllegalArgumentExceptionMapper implements HttpServletRequestAware, ExceptionMapper<IllegalArgumentException> {
 

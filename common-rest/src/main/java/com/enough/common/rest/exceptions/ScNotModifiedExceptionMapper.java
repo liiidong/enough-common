@@ -1,13 +1,13 @@
 package com.enough.common.rest.exceptions;
 
+
+import com.enough.common.rest.HttpServletRequestAware;
+import com.enough.common.rest.utils.HttpUtil;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.ext.ExceptionMapper;
-
-import com.enough.common.rest.exceptions.ScNotModifiedException;
-import com.supermap.gaf.rest.HttpServletRequestAware;
-import com.supermap.gaf.rest.utils.HttpUtil;
 
 public class ScNotModifiedExceptionMapper implements HttpServletRequestAware,  ExceptionMapper<ScNotModifiedException> {
     private HttpServletRequest request;

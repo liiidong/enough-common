@@ -1,4 +1,4 @@
-package com.supermap.gaf.rest.utils;
+package com.enough.common.rest.utils;
 
 import java.io.File;
 import java.io.IOException;

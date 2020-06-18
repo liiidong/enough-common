@@ -1,8 +1,8 @@
 package com.enough.common.rest.exceptions;
 
 import com.enough.common.model.ReturnResult;
-import com.supermap.gaf.rest.HttpServletRequestAware;
-import com.supermap.gaf.rest.utils.HttpUtil;
+import com.enough.common.rest.HttpServletRequestAware;
+import com.enough.common.rest.utils.HttpUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.WebApplicationException;

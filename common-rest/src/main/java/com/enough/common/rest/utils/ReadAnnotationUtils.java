@@ -1,13 +1,5 @@
 package com.enough.common.rest.utils;
 
-import java.io.IOException;
-import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.ws.rs.Path;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.env.StandardEnvironment;
 import org.springframework.core.io.Resource;
@@ -18,6 +10,12 @@ import org.springframework.core.type.ClassMetadata;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.SimpleMetadataReaderFactory;
 import org.springframework.util.ClassUtils;
+
+import javax.ws.rs.Path;
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.HashSet;
+import java.util.Set;
 
 @SuppressWarnings("rawtypes")
 public class ReadAnnotationUtils {
