@@ -16,12 +16,28 @@ import org.apache.commons.lang3.StringUtils;
 
 public class HttpUtil {
 
-    public static Map<String, String> getURLParameters(String queryString) {
+    public static final String HTTP_PREFIX = "http://";
+    public static final String HTTPS_PREFIX = "https://";
+
+    /**
+     * 获取请求参数k-v
+     *
+     * @param queryString
+     * @return
+     */
+    public static Map <String, String> getURLParameters(String queryString) {
         return getURLParameters(queryString, true);
     }
 
-    public static Map<String, String> getURLParameters(String queryString, boolean decode) {
-        Map<String, String> urlParams = new HashMap<>();
+    /**
+     * 获取请求参数k-v
+     *
+     * @param queryString
+     * @param decode
+     * @return
+     */
+    public static Map <String, String> getURLParameters(String queryString, boolean decode) {
+        Map <String, String> urlParams = new HashMap <>();
         String str = queryString;
         String utf = "utf-8";
 
@@ -82,33 +98,46 @@ public class HttpUtil {
         return ((str != null) && (!(str.equals(""))) && (str.indexOf(61) != -1));
     }
 
-    public static Map<String, String> buildUrlParameter(HttpServletRequest request) {
+    /**
+     * 解析请求url下载的query参数,返回map对象
+     *
+     * @param request
+     * @return
+     */
+    public static Map <String, String> buildUrlParameter(HttpServletRequest request) throws UnsupportedEncodingException {
         String paramString = null;
         try {
             String queryString = request.getQueryString();
             paramString = (StringUtils.isEmpty(queryString)) ? null : URLDecoder.decode(queryString, "UTF-8");
         } catch (UnsupportedEncodingException e) {
+            throw e;
             // throw new HttpException(Status.CLIENT_ERROR_BAD_REQUEST, resource.getMessage(IPortalResource.RESOURCE_PARAM_IS_ILLEGAL, new Object[0]), e);
         }
         return HttpUtil.getURLParameters(paramString);
     }
-    
+
+    /**
+     * 获取request的请求数据媒体类型
+     *
+     * @param request
+     * @return
+     */
     public static MediaType getAcceptMediaType(HttpServletRequest request) {
         String accept = request == null ? null : request.getHeader("Accept");
         MediaType type = MediaType.APPLICATION_JSON_TYPE;
-        if(StringUtils.isNotEmpty(accept) && accept.indexOf(",") > -1) {
+        if (StringUtils.isNotEmpty(accept) && accept.indexOf(",") > -1) {
             accept = accept.split(",")[0];
         }
         try {
             type = MediaType.valueOf(accept);
-        }catch (Exception e) {
+        } catch (Exception e) {
         }
         return type;
     }
-    
+
     /**
      * 获取请求ip
-     * 
+     *
      * @param request
      * @return
      */
@@ -130,34 +159,39 @@ public class HttpUtil {
         ip = request.getRemoteAddr();
         return ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
     }
-    
-    public static Map<String,String> getRequestHeaders(HttpServletRequest request){
-        Map<String,String> headerMap = new HashMap<>();
-        Enumeration<String> headers = request.getHeaderNames();
+
+    /**
+     * 获取请求头
+     *
+     * @param request
+     * @return
+     */
+    public static Map <String, String> getRequestHeaders(HttpServletRequest request) {
+        Map <String, String> headerMap = new HashMap <>();
+        Enumeration <String> headers = request.getHeaderNames();
         while (headers.hasMoreElements()) {
             String header = (String) headers.nextElement();
             headerMap.put(header, request.getHeader(header));
         }
         return headerMap;
     }
-    
+
     /**
      * <p>
-     *  检查rest请求是否编辑操作（对资源产生影响） 
+     * 检查rest请求是否编辑操作（对资源产生影响）
      * </p>
+     *
      * @param method
      * @return
      * @since 1.0.0
      */
     public static boolean isEditType(String method) {
         //只记录这3种谓词的body
-        if (StringUtils.equalsAnyIgnoreCase(HttpMethod.POST, method)
-                || StringUtils.equalsAnyIgnoreCase(HttpMethod.PUT, method)
-                || StringUtils.equalsAnyIgnoreCase(HttpMethod.DELETE, method)
-                || StringUtils.equalsAnyIgnoreCase(HttpMethod.PATCH, method)) {
+        if (StringUtils.equalsAnyIgnoreCase(HttpMethod.POST, method) || StringUtils.equalsAnyIgnoreCase(HttpMethod.PUT, method) || StringUtils
+                .equalsAnyIgnoreCase(HttpMethod.DELETE, method) || StringUtils.equalsAnyIgnoreCase(HttpMethod.PATCH, method)) {
             return true;
         }
         return false;
-    } 
+    }
 
 }

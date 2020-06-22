@@ -1,5 +1,6 @@
 package com.enough.common.rest.filters;
 
+import com.enough.common.rest.utils.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +40,7 @@ public class RequestWrapper extends HttpServletRequestWrapper {
         String contentType = null;
         final String[] contentTypeHeadNames = new String[] {"X-RequestEntity-ContentType", "Content-Type"};
         String queryString = this.getQueryString();
-        Map <String, String> queryStringMap = com.supermap.gaf.rest.utils.HttpUtil.getURLParameters(queryString);
+        Map <String, String> queryStringMap = HttpUtil.getURLParameters(queryString);
         for (String contentTypeHeadName : contentTypeHeadNames) {
             contentType = super.getHeader(contentTypeHeadName);
             if (contentType == null) {
