@@ -28,6 +28,12 @@ public class CommonBuilder<T> {
         return new CommonBuilder <>(instantiator);
     }
 
+    public <P> CommonBuilder <T> with(ConsumerN <T, P> consumer, P... p) {
+        Consumer <T> c = instance -> consumer.accept(instance, p);
+        modifiers.add(c);
+        return this;
+    }
+
     public <P1> CommonBuilder <T> with(Consumer1 <T, P1> consumer, P1 p1) {
         Consumer <T> c = instance -> consumer.accept(instance, p1);
         modifiers.add(c);
@@ -46,11 +52,16 @@ public class CommonBuilder<T> {
         return this;
     }
 
-    public T build(){
+    public T build() {
         T value = instantiator.get();
         modifiers.forEach(modifier -> modifier.accept(value));
         modifiers.clear();
         return value;
+    }
+
+    @FunctionalInterface
+    public interface ConsumerN<T, P> {
+        void accept(T t, P... p);
     }
 
     @FunctionalInterface

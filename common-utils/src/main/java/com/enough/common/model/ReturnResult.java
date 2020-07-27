@@ -67,24 +67,30 @@ public class ReturnResult<T> implements Serializable {
     }
 
     public enum Status {
-        SUCCESS, FAULT;
+        /**
+         * 成功
+         */
+        SUCCESS,
+        /**
+         * 失败
+         */
+        FAULT
     }
 
     public static <T> ReturnResult.ResultBuilder <T> success(Class <T> clazz) {
-        ReturnResult.ResultBuilder <T> builder = new ReturnResult.ResultBuilder();
+        ReturnResult.ResultBuilder <T> builder = new ReturnResult.ResultBuilder <>();
         builder.successed(true);
         return builder;
     }
 
     public static <T> ReturnResult.ResultBuilder <T> failed(Class <T> clazz) {
-        ReturnResult.ResultBuilder <T> builder = new ReturnResult.ResultBuilder();
+        ReturnResult.ResultBuilder <T> builder = new ReturnResult.ResultBuilder <>();
         builder.successed(false);
         return builder;
     }
 
-
     public static <T> ReturnResult.ResultBuilder <T> structure(boolean isSuccess, Class <T> clazz) {
-        ReturnResult.ResultBuilder <T> builder = new ReturnResult.ResultBuilder();
+        ReturnResult.ResultBuilder <T> builder = new ReturnResult.ResultBuilder <>();
         builder.successed(isSuccess);
         return builder;
     }
@@ -119,6 +125,7 @@ public class ReturnResult<T> implements Serializable {
             this.newResource = newResource;
             return this;
         }
+
         public ReturnResult.ResultBuilder <T> status(Integer status) {
             this.status = status;
             return this;
@@ -135,21 +142,16 @@ public class ReturnResult<T> implements Serializable {
         }
     }
 
-    public void test(String a,String b,String c){
+    public void test(String a, String b, String c) {
         System.out.println("a=" + a);
         System.out.println("b=" + b);
         System.out.println("c=" + c);
     }
 
     public static void main(String[] args) {
-        ReturnResult<String> returnResult = CommonBuilder.of(ReturnResult<String>::new)
-                .with(ReturnResult::setSuccessed,true)
-                .with(ReturnResult::setMsg,"测试通用Builder")
-                .with(ReturnResult::setStatus,200)
-                .with(ReturnResult::setNewResource,"")
-                .with(ReturnResult::setData,"newData")
-                .with(ReturnResult::test,"1","2","3")
-                .build();
+        ReturnResult <String> returnResult = CommonBuilder.of(ReturnResult <String>::new).with(ReturnResult::setSuccessed, true)
+                .with(ReturnResult::setMsg, "测试通用Builder").with(ReturnResult::setStatus, 200).with(ReturnResult::setNewResource, "")
+                .with(ReturnResult::setData, "newData").with(ReturnResult::test, "1", "2", "3").build();
         System.out.println("ReturnResult=" + JSON.toJSONString(returnResult));
     }
 
