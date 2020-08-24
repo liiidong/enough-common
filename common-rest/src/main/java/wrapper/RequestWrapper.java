@@ -1,4 +1,4 @@
-package com.enough.common.rest.filters;
+package wrapper;
 
 import com.enough.common.rest.utils.HttpUtil;
 import lombok.extern.slf4j.Slf4j;

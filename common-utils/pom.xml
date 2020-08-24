@@ -45,10 +45,12 @@
         <dependency>
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-web</artifactId>
+            <version>${easypoi.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-annotation</artifactId>
+            <version>${easypoi.version}</version>
         </dependency>
 
         <!-- HttpServletResponse所在jar -->

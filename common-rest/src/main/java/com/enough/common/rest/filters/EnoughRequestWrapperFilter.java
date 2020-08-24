@@ -13,6 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.common.collect.Maps;
+import wrapper.RequestWrapper;
 
 public class EnoughRequestWrapperFilter implements Filter {
 
