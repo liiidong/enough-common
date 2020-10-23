@@ -11,6 +11,10 @@
     <artifactId>common-utils</artifactId>
     <version>${parent.version}</version>
 
+    <properties>
+        <supercsv.version>2.4.0</supercsv.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -49,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>cn.afterturn</groupId>
-            <artifactId>easypoi-annotation</artifactId>
+            <artifactId>easypoi-com.enough.common.annotation</artifactId>
             <version>${easypoi.version}</version>
         </dependency>
 
@@ -79,6 +83,20 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <!-- 经测试1.3M 的CSV文件，super-csv解析速度是apache csv的一半，而且同样支持逐行读取 -->
+        <dependency>
+            <groupId>net.sf.supercsv</groupId>
+            <artifactId>super-csv</artifactId>
+            <version>${supercsv.version}</version>
         </dependency>
     </dependencies>
 
